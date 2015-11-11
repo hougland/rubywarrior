@@ -26,14 +26,17 @@ class Player
     # set variables
     initialize
 
+    if warrior.feel.wall?
+      warrior.pivot!
+
     # rescue the captive
-    if !rescued?(warrior)
-      if warrior.feel(:backward).empty? == true
-        warrior.walk!(:backward)
-      else
-         warrior.rescue!(:backward)
-         @rescue = true
-      end
+    # if !rescued?(warrior)
+    #   if warrior.feel(:backward).empty? == true
+    #     warrior.walk!(:backward)
+    #   else
+    #      warrior.rescue!(:backward)
+    #      @rescue = true
+    #   end
     # if under attack and health is low, move backward
     elsif under_attack?(warrior) && retreat?(warrior)
       if warrior.feel(:backward).empty?
